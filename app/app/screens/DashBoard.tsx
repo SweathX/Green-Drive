@@ -1,11 +1,16 @@
+"use client"
 import { View, Text, ScrollView, StyleSheet } from "react-native"
 import ScoreCard from "../components/ScoreCard"
-import SavingsCard from "../components/SavingCard"
+import SavingsCard from "../components/SavingsCard"
 import TripChart from "../components/TripChart"
 import StartTripButton from "../components/StartTripButton"
+import LanguageSwitcher from "../components/LanguageSwitcher"
 import { tripData } from "../data/mockData"
+import { useLanguage } from "../context/LanguageContext"
 
 const Dashboard = () => {
+  const { t } = useLanguage()
+
   // Données fictives pour la démo
   const ecoScore = 82
   const fuelSaved = 12.5 // en litres
@@ -15,19 +20,22 @@ const Dashboard = () => {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text style={styles.title}>Green Drive</Text>
-        <Text style={styles.subtitle}>Tableau de bord</Text>
+        <View>
+          <Text style={styles.title}>{t("dashboard.title")}</Text>
+          <Text style={styles.subtitle}>{t("dashboard.subtitle")}</Text>
+        </View>
+        <LanguageSwitcher />
       </View>
 
       <ScoreCard score={ecoScore} />
 
       <View style={styles.savingsContainer}>
-        <SavingsCard title="Carburant économisé" value={fuelSaved} unit="L" money={moneySaved} icon="fuel" />
-        <SavingsCard title="CO₂ évité" value={co2Avoided} unit="kg" icon="leaf" />
+        <SavingsCard title={t("dashboard.fuelSaved")} value={fuelSaved} unit="L" money={moneySaved} icon="fuel" />
+        <SavingsCard title={t("dashboard.co2Avoided")} value={co2Avoided} unit="kg" icon="leaf" />
       </View>
 
       <View style={styles.chartContainer}>
-        <Text style={styles.sectionTitle}>Vos derniers trajets</Text>
+        <Text style={styles.sectionTitle}>{t("dashboard.recentTrips")}</Text>
         <TripChart data={tripData} />
       </View>
 
@@ -44,6 +52,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 10,
@@ -75,7 +86,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   footer: {
-    height: 30,
+    height: 20,
   },
 })
 

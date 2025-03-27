@@ -1,11 +1,15 @@
+"use client"
 import { View, Text, StyleSheet } from "react-native"
 import { Feather } from "@expo/vector-icons"
+import { useLanguage } from "../context/LanguageContext"
 
 interface ScoreCardProps {
   score: number
 }
 
 const ScoreCard = ({ score }: ScoreCardProps) => {
+  const { t, language } = useLanguage()
+
   // Déterminer la couleur en fonction du score
   const getScoreColor = (score: number) => {
     if (score >= 80) return "#34C759" // Vert
@@ -13,7 +17,33 @@ const ScoreCard = ({ score }: ScoreCardProps) => {
     return "#FF3B30" // Rouge
   }
 
+  // Déterminer le message en fonction du score
+  const getScoreMessage = (score: number) => {
+    if (score >= 80) return language === "fr" ? "excellente" : "excellent"
+    if (score >= 60) return language === "fr" ? "bonne" : "good"
+    return language === "fr" ? "à améliorer" : "needs improvement"
+  }
+
+  // Déterminer le conseil en fonction du score
+  const getTip = (score: number) => {
+    if (score >= 80) {
+      return language === "fr"
+        ? "Continuez à anticiper les freinages pour améliorer votre score"
+        : "Keep anticipating braking to improve your score"
+    }
+    if (score >= 60) {
+      return language === "fr"
+        ? "Essayez d'accélérer plus doucement pour économiser du carburant"
+        : "Try to accelerate more smoothly to save fuel"
+    }
+    return language === "fr"
+      ? "Évitez les accélérations brusques et les freinages tardifs"
+      : "Avoid sudden accelerations and late braking"
+  }
+
   const scoreColor = getScoreColor(score)
+  const scoreMessage = getScoreMessage(score)
+  const tip = getTip(score)
 
   return (
     <View style={styles.container}>
@@ -24,13 +54,14 @@ const ScoreCard = ({ score }: ScoreCardProps) => {
         </View>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.title}>Score d'éco-conduite</Text>
+        <Text style={styles.title}>{t("dashboard.ecoScore")}</Text>
         <Text style={styles.description}>
-          Votre conduite est <Text style={{ color: scoreColor, fontWeight: "600" }}>excellente</Text>
+          {language === "fr" ? "Votre conduite est " : "Your driving is "}
+          <Text style={{ color: scoreColor, fontWeight: "600" }}>{scoreMessage}</Text>
         </Text>
         <View style={styles.tipContainer}>
           <Feather name="info" size={14} color="#8E8E93" />
-          <Text style={styles.tipText}>Continuez à anticiper les freinages pour améliorer votre score</Text>
+          <Text style={styles.tipText}>{tip}</Text>
         </View>
       </View>
     </View>

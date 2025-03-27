@@ -1,7 +1,11 @@
+"use client"
 import { TouchableOpacity, Text, StyleSheet } from "react-native"
 import { Feather } from "@expo/vector-icons"
+import { useLanguage } from "../context/LanguageContext"
 
 const StartTripButton = () => {
+  const { t } = useLanguage()
+
   const handleStartTrip = () => {
     // Logique pour démarrer un nouveau trajet
     console.log("Démarrer un nouveau trajet")
@@ -10,7 +14,7 @@ const StartTripButton = () => {
   return (
     <TouchableOpacity style={styles.button} onPress={handleStartTrip} activeOpacity={0.8}>
       <Feather name="navigation" size={20} color="#FFFFFF" />
-      <Text style={styles.buttonText}>Démarrer un trajet</Text>
+      <Text style={styles.buttonText}>{t("home.startTrip")}</Text>
     </TouchableOpacity>
   )
 }
