@@ -1,50 +1,76 @@
-# Welcome to your Expo app 👋
+# Green-Drive 🌱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Description
 
-## Get started
+Green-Drive is a mobile application developed with React Native and Expo, aiming to promote more ecological and responsible driving. The application helps users adopt driving habits that are more environmentally friendly.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- Driving habits tracking
+- Fuel consumption statistics
+- Eco-driving tips
+- Intuitive and modern user interface
 
-2. Start the app
+## Technologies Used
 
-   ```bash
-    npx expo start
-   ```
+- React Native
+- Expo
+- TypeScript
+- Node.js
 
-In the output, you'll find options to open the app in a
+## Prerequisites
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Node.js (version 14 or higher)
+- npm or yarn
+- Expo CLI
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Installation
 
-## Get a fresh project
-
-When you're ready, run:
+1. Clone the repository:
 
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/Green-Drive.git
+cd Green-Drive
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
 
-## Learn more
+```bash
+cd app
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Launch the application:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npx expo start
+```
 
-## Join the community
+## Project Structure
 
-Join our community of developers creating universal apps.
+```
+Green-Drive/
+├── app/
+│   ├── assets/         # Images and resources
+│   ├── app/           # Components and screens
+│   ├── node_modules/  # Dependencies
+│   └── package.json   # Project configuration
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contributing
+
+Contributions are welcome! Feel free to:
+
+1. Fork the project
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+## Contact
+
+For any questions or suggestions, please feel free to open an issue on GitHub.
